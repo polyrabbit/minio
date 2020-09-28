@@ -722,10 +722,7 @@ func (a adminAPIHandlers) InfoCannedPolicy(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	if err = json.NewEncoder(w).Encode(policy); err != nil {
-		writeErrorResponseJSON(ctx, w, toAdminAPIErr(ctx, err), r.URL)
-		return
-	}
+	json.NewEncoder(w).Encode(policy)
 	w.(http.Flusher).Flush()
 }
 
